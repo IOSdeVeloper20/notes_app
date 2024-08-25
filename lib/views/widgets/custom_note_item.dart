@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 
@@ -43,7 +45,12 @@ class NoteItem extends StatelessWidget {
                   ),
                 ),
                 trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete();
+                    //to refresh the list
+                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                    print('heollssssss${BlocProvider.of<NotesCubit>(context)}');
+                  },
                   icon: const Icon(CupertinoIcons.trash),
                   color: Colors.black,
                   iconSize: 24,

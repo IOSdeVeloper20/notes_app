@@ -6,12 +6,13 @@ import 'package:notes_app/views/widgets/notes_view_body.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => NotesCubit(),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
